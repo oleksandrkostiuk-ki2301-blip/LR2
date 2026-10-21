@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторна робота №2 - JavaScript</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 30px auto; padding: 0 15px; }
+    h2 { margin-top: 25px; }
+    button { padding: 8px 14px; margin: 3px; cursor: pointer; }
+    #output { background: #f4f4f4; border: 1px solid #ccc; border-radius: 6px;
+              padding: 12px; min-height: 120px; margin-top: 20px; }
+    #output p { margin: 4px 0; }
+    .task { font-weight: bold; margin-top: 10px !important; }
+  </style>
+</head>
+<body>
+  <h1>Лабораторна робота №2</h1>
+
+  <h2>Рівень 1</h2>
+  <button onclick="task4_1()">Завдання 1</button>
+  <button onclick="task4_2()">Завдання 2</button>
+  <button onclick="task4_3()">Завдання 3</button>
+
+  <h2>Рівень 2</h2>
+  <button onclick="task7_1()">Завдання 1</button>
+  <button onclick="task7_2()">Завдання 2</button>
+  <button onclick="task7_3()">Завдання 3</button>
+
+  <h2>Рівень 3</h2>
+  <button onclick="task10_1()">Завдання 1</button>
+  <button onclick="task10_2()">Завдання 2</button>
+  <button onclick="task10_3()">Завдання 3</button>
+
+  <h2>Результат</h2>
+  <button onclick="clearOutput()">Очистити</button>
+  <div id="output"></div>
+
+  <script>
+    function print(text, isTitle) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      if (isTitle) p.className = 'task';
+      document.getElementById('output').appendChild(p);
+    }
+    function clearOutput() {
+      document.getElementById('output').innerHTML = '';
+    }
+
+    function task4_1() {
+      print('Рівень 1, завдання 1', true);
+      let userName = prompt('Enter your name');
+      let msg = `Hello, ${userName}! Welcome to JavaScript`;
+      alert(msg);
+      print(msg);
+    }
+
+    function task4_2() {
+      print('Рівень 1, завдання 2', true);
+      let age = prompt('Enter your age');
+      let currentYear = new Date().getFullYear();
+      let msg = `You were born in ${currentYear - age}`;
+      alert(msg);
+      print(msg);
+    }
+
+    function task4_3() {
+      print('Рівень 1, завдання 3', true);
+      let firstName = prompt('Enter first name');
+      let lastName = prompt('Enter last name');
+      let msg1 = 'Your full name is ' + firstName + ' ' + lastName;
+      let msg2 = `Your full name is ${firstName} ${lastName}`;
+      console.log(msg1);
+      console.log(msg2);
+      print('Через +: ' + msg1);
+      print('Через шаблонний рядок: ' + msg2);
+    }
+
+    let userName = 'Sanya'; 
+
+    function task7_1() {
+      print('Рівень 2, завдання 1', true);
+      if (true) {
+        let userName = prompt('Enter another name');
+        console.log('Inside block:', userName);
+        print('Inside block: ' + userName);
+      }
+      console.log('Outside block:', userName);
+      print('Outside block: ' + userName);
+      print('let має блочну область видимості, тому userName всередині if існує лише в цьому блоці і не змінює зовнішню змінну.');
+    }
+
+    function task7_2() {
+      print('Рівень 2, завдання 2', true);
+      let name = prompt('Enter your name');
+      let age = prompt('Enter your age');
+      let ok = confirm(`Hello, ${name}! Your age is ${age}. Continue?`);
+      let msg = ok ? 'Welcome!' : 'Goodbye!';
+      alert(msg);
+      print(`Ім'я: ${name}, вік: ${age}`);
+      print('Результат: ' + msg);
+    }
+
+    function task7_3() {
+      print('Рівень 2, завдання 3', true);
+      let num = prompt('Enter a number');
+      let msg = (num % 2 === 0) ? 'Number is even' : 'Number is odd';
+      alert(msg);
+      print(`Число: ${num}`);
+      print('Результат: ' + msg);
+    }
+
+    function calculate() {
+      let result = 1;
+      if (true) {
+        let result = 2;
+        console.log('Inside if:', result);
+        print('Inside if: ' + result);
+      }
+      console.log('Outside if:', result);
+      print('Outside if: ' + result);
+    }
+
+    function task10_1() {
+      print('Рівень 3, завдання 1', true);
+      calculate();
+      print('змінна result всередині if окрема, тому зовнішня result не змінилась.');
+    }
+
+    function task10_2() {
+      print('Рівень 3, завдання 2', true);
+      const secretNumber = 11 % 10; 
+      let guess = prompt('Enter a number from 0 to 9');
+      let msg = (Number(guess) === secretNumber) ? 'Correct!' : 'Wrong!';
+      alert(msg);
+      print(`Ваше число: ${guess}`);
+      print('Результат: ' + msg);
+    }
+
+    function task10_3() {
+      print('Рівень 3, завдання 3', true);
+      let name = prompt('Enter your name');
+      let n1 = Number(prompt('Enter first number'));
+      let n2 = Number(prompt('Enter second number'));
+      let msg = 'Hello, ' + name + '! The sum of ' + n1 + ' and ' + n2 + ' is ' + (n1 + n2);
+      console.log(msg);
+      print(msg);
+    }
+  </script>
+</body>
+</html>
